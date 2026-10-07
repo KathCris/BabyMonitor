@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AuthPage from "../features/auth/page";
+import { cn } from "@/lib/utils";
+
+const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
+
+
 // import { NextIntlClientProvider } from 'next-intl';
 // import { getLocale, getMessages } from 'next-intl/server';
 
@@ -20,7 +25,7 @@ export const metadata: Metadata = {
   description: "BabyMonitor - Monitoramento de Bebês",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   // const locale = await getLocale();
   // const messages = await getMessages();
 
@@ -29,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-mono", jetbrainsMono.variable)}
     >
       <body className="min-h-full flex flex-col">
       {/* <NextIntlClientProvider locale={locale} messages={messages}> */}
