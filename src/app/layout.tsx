@@ -1,29 +1,30 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
-import AuthPage from "../features/auth/page";
-import { cn } from "@/lib/utils";
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google'
 
-const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
+import { cn } from '@/lib/utils'
 
+import AuthPage from '../features/auth/page'
+import './globals.css'
+
+const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 // import { NextIntlClientProvider } from 'next-intl';
 // import { getLocale, getMessages } from 'next-intl/server';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+})
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
-  title: "BabyMonitor",
-  description: "BabyMonitor - Monitoramento de Bebês",
-};
+  title: 'BabyMonitor',
+  description: 'BabyMonitor - Monitoramento de Bebês',
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // const locale = await getLocale();
@@ -34,14 +35,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-mono", jetbrainsMono.variable)}
+      className={cn(
+        'h-full',
+        'antialiased',
+        geistSans.variable,
+        geistMono.variable,
+        'font-mono',
+        jetbrainsMono.variable
+      )}
     >
       <body className="min-h-full flex flex-col">
-      {/* <NextIntlClientProvider locale={locale} messages={messages}> */}
+        {/* <NextIntlClientProvider locale={locale} messages={messages}> */}
         <AuthPage />
         {children}
         {/* </NextIntlClientProvider> */}
       </body>
     </html>
-  );
+  )
 }
