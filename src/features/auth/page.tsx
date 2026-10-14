@@ -36,7 +36,7 @@ export default function AuthPage() {
               <Input
                 type="text"
                 placeholder="Token"
-                className="w-full max-w-md  border-gray-300 rounded-md p-2"
+                className="w-full max-w-md border border-gray-300 rounded-md p-2"
                 value={token}
                 disabled={token.length > 0}
               />
@@ -50,7 +50,7 @@ export default function AuthPage() {
               <Input
                 type="text"
                 placeholder="Colocar o token gerado no BabyMonitor"
-                className="w-full max-w-md border-gray-300 rounded-md p-2"
+                className="w-full max-w-md border border-gray-300 rounded-md p-2"
                 value={babyMonitorToken}
                 onChange={(e) => setBabyMonitorToken(e.target.value)}
               />
