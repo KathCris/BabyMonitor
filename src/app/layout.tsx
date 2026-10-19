@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 
-import AuthPage from '../features/auth/page'
 import './globals.css'
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
@@ -46,7 +45,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="min-h-full flex flex-col">
         {/* <NextIntlClientProvider locale={locale} messages={messages}> */}
-        <AuthPage />
         {children}
         {/* </NextIntlClientProvider> */}
       </body>

@@ -3,13 +3,15 @@
 import { useState } from 'react'
 
 import { Input } from '@base-ui/react/input'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
 export default function AuthPage() {
   const [token, setToken] = useState('')
   const [isMonitoring, setIsMonitoring] = useState(false)
-  const [babyMonitorToken, setBabyMonitorToken] = useState('')
+  const [roomId, setRoomId] = useState('')
+  const router = useRouter()
   const handleGenerateToken = () => {
     const newToken = Math.random().toString(36).substring(2, 15)
     setToken(newToken)
@@ -20,8 +22,8 @@ export default function AuthPage() {
   }
 
   const handleConnect = () => {
-    if (babyMonitorToken === token) {
-      console.log('Conectando com o BabyMonitor')
+    if (roomId === token) {
+      router.push(`/features/room/${roomId}`)
     } else {
       console.log('Token inválido')
     }
@@ -51,8 +53,8 @@ export default function AuthPage() {
                 type="text"
                 placeholder="Colocar o token gerado no BabyMonitor"
                 className="w-full max-w-md border border-gray-300 rounded-md p-2"
-                value={babyMonitorToken}
-                onChange={(e) => setBabyMonitorToken(e.target.value)}
+                value={roomId}
+                onChange={(e) => setRoomId(e.target.value)}
               />
               <Button onClick={handleConnect}>Conectar</Button>
             </div>
